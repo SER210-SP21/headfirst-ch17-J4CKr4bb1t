@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import com.hfad.tasks.databinding.FragmentTasksBinding
 import androidx.lifecycle.ViewModelProvider
 
@@ -30,8 +31,19 @@ class TasksFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
 
+        //for recycleView
+        val adapter = TaskItemAdapter()
+        binding.tasksList.adapter = adapter
+
+        viewModel.tasks.observe(viewLifecycleOwner, Observer { it?.let {
+            adapter.data = it
+            }
+        })
+
+
         return view
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
