@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.devtools.ksp") version "1.8.10-1.0.9" apply false
+    id ("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -44,6 +45,8 @@ android {
 dependencies {
 
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
+
 
     val room_version = "2.6.1"
 
